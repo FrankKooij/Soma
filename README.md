@@ -1,6 +1,6 @@
-# Soma for Ulysses app
-
 ![Soma logo](https://github.com/JayPanoz/Soma/raw/master/assets/soma.png)
+
+# Soma for Ulysses app
 
 Soma is a blueprint for an ePub CSS compliant with all major Reading Systems (RS): 
 
