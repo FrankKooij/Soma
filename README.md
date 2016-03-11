@@ -64,7 +64,7 @@ To sum (other) things up:
 - hyphens and page breaks have been taken care of for specific elements (e.g. headings);
 - overall, typesetting has been prettified (e.g. paragraphs’ conditional `text-indent`, vertical positioning of `sup`, reset to roman/normal for italic nested in italic, &c.);
 - horizontal rule is compliant with night modes;
-- `figure` and `video` dimensions has been taken care of in order to guarantee they won’t overflow;
+- `figure` and `video` dimensions have been taken care of in order to guarantee they won’t overflow;
 - `aside` has been styled so that the footnote be considered a footnote when displayed (only iBooks hides that since it is using it in a pop-up);
 - Since mobi7 doesn’t support decimal numbers, all values are rounded for it.
 
@@ -78,13 +78,17 @@ To put it simply, Soma is a humble contribution to a better UX in all major RS, 
 
 ### Why the charset?
 
-Might you edit this theme, this charset will allow you to put real characters in `content` using `:before` or `:after:` pseudo elements. This comes handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
+Shall you edit this theme, this charset will allow you to put non-ASCII characters in `content` using `:before` or `:after:` pseudo elements. This comes handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
 
 ### Why the namespaces?
 
 If you want to style using the `epub:type` attribute, the epub namespace is mandatory. 
 
 The xhtml namespace may also be useful if you edit your ePub file manually and use tags like `acronym`, which is deprecated in HTML but not in XHTML.
+
+### Any tips for headings? 
+
+When designing this stylesheet, I saw that Ulysses' developers decided that chapter title is `h1` so use that for… chapter titles. Use `h2` for section titles (inside chapters).
 
 ### Why are h5 and h6 left unstyled?
 
@@ -161,7 +165,7 @@ But documenting a CSS for ePub is a really tough job—basically, comments every
 
 However, I may give some pieces of advice for some really important stuff.
 
-- `webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on theme currently used—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
+- `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on theme currently used—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
 - Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, thematic break (`hr`), &c. This is not supported in RMSDK.
 - If you have snippets of code in your eBook, you’d better embed a monospace font in your ePub file. Some devices/apps don’t have a default one and will render code as serif or sans-serif.
 - Be insanely cautious with value `em` for margins and paddings, especially left and right; if the user increases font-size, margins will increase accordingly. As a result, you get bigger text in a smaller container. This is the reason why I am using values in `%` (computed based on `width` of container).
@@ -169,6 +173,7 @@ However, I may give some pieces of advice for some really important stuff.
 - If you change the modular scale (i.e. `font-size`), all line-heights and margins have to be recalculated if you want to keep vertical rhythm.
 - Don’t use decimal values in `@media amzn-mobi{}`, KindleGen converter will round them quite harshly. **Please also note Mobi7 supports ± HTML 3.2.**
 - Cover img styling in ePub is crap. **Design your cover with a 16:9 aspect ratio and you should be safe.** 16:10 or 4:3 and you’re screwed–unless you modify `img.cover` styles, that is.
+- Whatever you do, don't leave the proprietary Amazon media queries (`amzn-kf8` + `amzn-mobi`) empty: **it will crash RMSDK.** CSS comments won’t fix this issue.
 
 ### How do you manage your stylesheets?
 
