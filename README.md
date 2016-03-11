@@ -74,6 +74,10 @@ Besides, there is no suggested rendering specified for eBooks—as is the case w
 
 To put it simply, Soma is a humble contribution to a better UX in all major RS, not just iBooks.
 
+## TODO
+
+Turn the following FAQ into a Wiki—I’m so sorry.
+
 ## FAQ
 
 ### Why the charset?
@@ -174,6 +178,7 @@ However, I may give some pieces of advice for some really important stuff.
 - `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on the theme currently in use—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
 - Do **never** declare black or shades of gray using `color` for text: some apps won’t invert this value when the user enables night mode and, as a result, they’ll get dark text on a dark background, making the text unreadable. If you really need black, use `color: inherit`.
 - Do **never** declare `font-family` for `p` or `li` and other critical bodycopy element as it will disable the typeface setting for users in a shitload of apps and devices. Let the cascade do its job, making those elements inherit from `body`.
+- Do **never** declare `font-size` in `px` as it will disable the font size setting in RMSDK. Moreover, Kindle eInk devices don’t map `1em` and `100%` to `16px` but a multiple of `16px` depending on display resolution (e.g. `32px`, `64px` and so on and so forth). 
 - Don’t rely on the `html` selector. Please note RS usually declare `text-rendering: optimizeLegibility` when it doesn’t have issues (rendering or performance) so do not impose it on users—especially as there are wild bugs out there. 
 - Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, list style type, thematic break (`hr`), &c. This is not supported in RMSDK.
 - If you have snippets of code in your eBook, you’d better embed a monospace font in your ePub file. Some devices/apps don’t have a default one and will render code as serif or sans-serif.
