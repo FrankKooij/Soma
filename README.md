@@ -210,6 +210,10 @@ Disclaimer: got an awful amount of work to deal with like, say, making eBooks to
 
 **Nota Bene: all disrespectful messages are belong to “is:issue is:closed”.**
 
+### Will you push Soma to Ulysses’ Style Exchange?
+
+Yeah, probably. But only when I’m sure everything is OK and there are no critical issues with it.
+
 ### Useful links for eBook Production
 
 eBook Production is a little bit different than web development. So here are some links that could prove useful…
