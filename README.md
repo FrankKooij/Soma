@@ -68,7 +68,7 @@ To sum (other) things up:
 - `aside` has been styled so that the footnote be considered a footnote when displayed (only iBooks hides that since it is using it in a pop-up);
 - Since mobi7 doesn’t support decimal numbers, all values are rounded for it.
 
-Yeah, I know, Soma seems bloated compared to the default Ulysses themes but don’t forget it is dealing with a lot more RS. From my understanding, **default stylesheets only deal with iBooks.** Now, iBooks is ±10% of the US market and if you’re using Ulysses to write and publish your eBooks, this clearly leads to a missed opportunity.
+Yeah, I know, Soma seems bloated compared to the default Ulysses themes but don’t forget it is dealing with a lot more RS. From my understanding, default stylesheets only deal with iBooks. Now, iBooks is ±10% of the US market and if you’re using Ulysses to write and publish your eBooks, this clearly leads to a missed opportunity.
 
 Besides, there is no suggested rendering specified for eBooks—as is the case with HTML5 for instance—so that’s another issue Soma has to cope with. And I’m not even mentioning overrides…
 
@@ -78,7 +78,7 @@ To put it simply, Soma is a humble contribution to a better UX in all major RS, 
 
 ### Why the charset?
 
-Shall you edit this theme, this charset will allow you to put non-ASCII characters in `content` using `:before` or `:after:` pseudo elements. This comes handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
+Shall you edit this theme, this charset will allow you to put non-ASCII characters in `content` using `:before` or `:after` pseudo elements. This comes handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
 
 ### Why the namespaces?
 
@@ -211,7 +211,7 @@ eBook Production is a little bit different than web development. So here are som
 - [MobileRead Forums](http://www.mobileread.com/forums/)
 - [Twitter’s #eprdctn](https://twitter.com/hashtag/eprdctn)
 - [ePub Zone](http://epubzone.org)
-- [my blog](http://jiminy.chapalpanoz.com) if you speak French.
+- [my blog](http://jiminy.chapalpanoz.com) if you speak French
 
 ### How to contact you? 
 
@@ -220,7 +220,7 @@ OK, look, I’m a freelance so I must deal with so many things in so little time
 Here are 3 simple rules to follow:
 
 - if you have problems using or editing Soma, use Github issues;
-- if you want to say hello—or maybe thank me?—, use [Twitter](https://twitter.com/jiminypan)
+- if you want to say hello—or maybe thank me?—, use [Twitter](https://twitter.com/jiminypan);
 - **only if** you want to hire me, use the contact form on my website.
 
 Thank you in advance.
