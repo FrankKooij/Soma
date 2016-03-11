@@ -36,15 +36,15 @@ You can now use Soma when exporting to ePub.
 
 ## Goals
 
-The aim of this blueprint is to provide with a stylesheet you can trust when exporting to ePub (from Ulysses app).
+The aim of this blueprint is to provide a stylesheet you can trust when exporting to ePub (from Ulysses app).
 
 As a consequence, it relies on several principles: 
 
 1. **Soma is retro-compatible:** you can load your EPUB3 file onto an ePub2-only compatible device/app and it will work;
-2. **Soma should not disable user settings:** this is insanely tough but carefully chosen styles are doing the heavy lifting—type settings and “themes” (night modes) should be OK;
+2. **Soma should not disable user settings:** this is insanely tough but carefully chosen CSS declarations are doing the heavy lifting—type settings and “themes” (night modes) should be OK;
 3. **Soma has to deal with RS’ overrides:** RS are overriding styles to guarantee a minimum level of UX, Soma overrides those overrides when need be;
 4. **Soma shall cope with different types of books:** Soma was designed for both fiction and non-fiction books;
-5. **Soma must provide with Kindle support:** given Kindle’s market share, especially in the US and the UK, support for KF8 and legacy Mobi7 is mandatory.
+5. **Soma must provide Kindle support:** given Kindle’s market share, especially in the US and the UK, support for KF8 and legacy Mobi7 is mandatory.
 
 Those principles are the backbone of Soma and explain why, for instance, `line-height` is inherited from `body` or why there are proprietary Kindle media queries in there.
 
@@ -52,7 +52,7 @@ Those principles are the backbone of Soma and explain why, for instance, `line-h
 
 First and foremost, it is important to remember **Soma was designed for Ulysses’ ePub output** and won’t perfectly work with other authoring software—it covers vanilla markdown though, so making it work with other apps is just about adapting and extending.
 
-In order to solve many issues, a “progressive enhancement” strategy has been adopted: Soma was designed for ePub2, unsupported styles are declared only to inject some *cachet* in EPUB3 (e.g. links in small-caps). As for Kindle, KF8 is part of the global stylesheet, requiring only minimal alterations afterwards.
+In order to solve many issues, a “progressive enhancement” strategy has been adopted: Soma was designed for ePub2, unsupported styles are declared only to give some *cachet* to EPUB3 (e.g. links in small-caps). As for Kindle, KF8 is part of the global stylesheet, requiring only minimal alterations afterwards.
 
 To sum (other) things up: 
 
@@ -60,12 +60,12 @@ To sum (other) things up:
 - a modular scale (major second) has been used to achieve harmony and solve the “smartphone issue” a.k.a. small screens on which users may increase font size;
 - vertical rhythm has been enforced to achieve harmony.
 - a “mini reset” makes sure HTML5 block elements are displayed as they should in ePub2 RS—don’t get rid of it;
-- declarations for `body` improve hyphenation + widows & orphans, they also provide with defaults all elements can inherit when need be (user settings issue);
+- declarations for `body` improve hyphenation + widows & orphans, they also provide defaults that all elements can inherit when needed (user settings issue);
 - hyphens and page breaks have been taken care of for specific elements (e.g. headings);
 - overall, typesetting has been prettified (e.g. paragraphs’ conditional `text-indent`, vertical positioning of `sup`, reset to roman/normal for italic nested in italic, &c.);
 - horizontal rule is compliant with night modes;
-- `figure` and `video` dimensions have been taken care of in order to guarantee they won’t overflow;
-- `aside` has been styled so that the footnote be considered a footnote when displayed (only iBooks hides that since it is using it in a pop-up);
+- `figure` and `video` dimensions have been styled to guarantee they won’t overflow;
+- `aside` has been styled so that the footnote be considered a footnote when displayed (only iBooks hides `aside` content since it is using it in a pop-up);
 - Since mobi7 doesn’t support decimal numbers, all values are rounded for it.
 
 Yeah, I know, Soma seems bloated compared to the default Ulysses themes but don’t forget it is dealing with a lot more RS. From my understanding, default stylesheets only deal with iBooks. Now, iBooks is ±10% of the US market and if you’re using Ulysses to write and publish your eBooks, this clearly leads to a missed opportunity.
@@ -82,7 +82,7 @@ Turn the following FAQ into a Wiki—I’m so sorry.
 
 ### Why the charset?
 
-Shall you edit this theme, this charset will allow you to put non-ASCII characters in `content` using `:before` or `:after` pseudo elements. This comes handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
+Should you edit this theme, this charset will allow you to put non-ASCII characters in `content` using `:before` or `:after` pseudo elements. This comes in handy since Mac OSX has a character palette in which double-clicking a glyph will add it in your document.
 
 ### Why the namespaces?
 
@@ -155,11 +155,11 @@ To clarify:
 
 - we’re not using a `<sup>` for the footnote call as we need a target “tappable” enough on RMSDK-powered devices/apps (eInk readers for instance), hence the number between `(` and `)` to make it bigger.
 - we need to link the call and the footnote (using `id`, `href` and the callback);
-- because the footnote is not a direct child of `aside` (there’s a `p` and a `span` in between), **iBooks will display this footnote** at the end of the XHTML document—you may want to add a horizontal rule before, as in print books.
+- because the footnote is not in a `aside` with the `epub:type` inflection, **iBooks will display this footnote** at the end of the XHTML document—you may want to add a horizontal rule before, as in print books.
 
 On the one hand, **if you’re publishing in the iBookStore only, changing the markup is your call.** You’d probably be better off with Ulysses’ default output. 
 
-On the other hand, **if you want to publish anywhere else, you got no choice.** Footnotes’ UX will be abysmal as they won’t work properly. Then some readers will say that you don’t know shit because you can’t hyperlink. Finally you’ll get a bad rap and it’s game over.
+On the other hand, **if you want to publish anywhere else, you’ve got no choice.** Footnotes’ UX will be abysmal as they won’t work properly. Then some readers will say that you don’t know shit because you can’t hyperlink. Finally you’ll get a bad rap and it’s game over.
 
 ### Converting to Kindle
 
@@ -176,14 +176,14 @@ But documenting a CSS for ePub is a really tough job—basically, comments every
 However, I may give some pieces of advice for some really important stuff.
 
 - `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on the theme currently in use—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
-- Do **never** declare black or shades of gray using `color` for text: some apps won’t invert this value when the user enables night mode and, as a result, they’ll get dark text on a dark background, making the text unreadable. If you really need black, use `color: inherit`.
-- Do **never** declare `font-family` for `p` or `li` and other critical bodycopy element as it will disable the typeface setting for users in a shitload of apps and devices. Let the cascade do its job, making those elements inherit from `body`.
-- Do **never** declare `font-size` in `px` as it will disable the font size setting in RMSDK. Moreover, Kindle eInk devices don’t map `1em` and `100%` to `16px` but a multiple of `16px` depending on display resolution (e.g. `32px`, `64px` and so on and so forth). 
+- **Do not ever** declare black or shades of gray using `color` for text: some apps won’t invert this value when the user enables night mode and, as a result, they’ll get dark text on a dark background, making the text unreadable. If you really need black, use `color: inherit`.
+- **Do not ever** declare `font-family` for `p` or `li` and other critical bodycopy elements as it will disable the typeface setting for users in a shitload of apps and devices. Let the cascade do its job, making those elements inherit from `body`.
+- **Do not ever** declare `font-size` in `px` as it will disable the font size setting in RMSDK. Moreover, Kindle eInk devices don’t map `1em` and `100%` to `16px` but a multiple of `16px` depending on display resolution (e.g. `32px`, `64px` and so on and so forth). 
 - Don’t rely on the `html` selector. Please note RS usually declare `text-rendering: optimizeLegibility` when it doesn’t have issues (rendering or performance) so do not impose it on users—especially as there are wild bugs out there. 
 - Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, list style type, thematic break (`hr`), &c. This is not supported in RMSDK.
 - If you have snippets of code in your eBook, you’d better embed a monospace font in your ePub file. Some devices/apps don’t have a default one and will render code as serif or sans-serif.
-- Be insanely cautious with value `em` for margins and paddings, especially left and right; if the user increases font-size, margins will increase accordingly. As a result, you get bigger text in a smaller container. This is the reason why I am using values in `%` (computed based on `width` of container).
-- Styling of HTML5 elements (e.g. `aside`, `figure`, `section`, &c.) relies on the mini reset. Don’t ever get rid of this reset, please, ePub2-only RS being still popular worldwide.
+- Be insanely cautious with `em` values for margins and paddings, especially left and right; if the user increases font-size, margins will increase accordingly. As a result, you get bigger text in a smaller container. This is the reason why I am using values in `%` (computed based on `width` of container).
+- Styling of HTML5 elements (e.g. `aside`, `figure`, `section`, &c.) relies on the mini reset. Don’t ever get rid of this reset, please, because ePub2-only RS are still popular worldwide.
 - If you change the modular scale (i.e. `font-size`), all line-heights and margins have to be recalculated if you want to keep vertical rhythm.
 - Don’t use decimal values in `@media amzn-mobi{}`, KindleGen converter will round them quite harshly. **Please also note Mobi7 supports ± HTML 3.2.**
 - Cover img styling in ePub is crap. **Design your cover with a 16:9 aspect ratio and you should be safe.** 16:10 or 4:3 and you’re screwed–unless you modify `img.cover` styles, that is.
@@ -199,9 +199,11 @@ For the record, the backbone of Soma’s styling was generated using v.0.66.6 of
 
 ### Is Soma offerring some sort of Universal Support?
 
-Alright, you want to know if this stylesheet is likely to save your arse absolutely everywhere? 
+Alright, you want to know if this stylesheet is likely to save your arse absolutely everywhere?
 
-I’m afraid I can’t guarantee that since a lot of ePub apps don’t even fully implement ePub2 specs–I’m looking at you, Android apps… Die, Die, DIE!
+Not. Even. Close.
+
+I can’t guarantee Soma is bulletproof since a lot of ePub apps don’t even fully implement ePub2 specs–I’m looking at you, Android apps… Die, Die, DIE!
 
 Listen, some apps don’t even support the `hr` tag because their developers don’t give a damn about structure and semantics. Others don’t even support CSS and I’m not kidding.
 
@@ -209,9 +211,9 @@ So if some readers complain, tell them to use another app, a better one. And if 
 
 ### Issues & feature requests
 
-**If you got issues, file them.** To the extent possible (see previous question), I’ll do my best to fix them.
+**If you’ve got issues, file them.** To the extent possible (see previous question), I’ll do my best to fix them.
 
-**If you got feature requests, fork Soma and make it happen.** Soma is covering all stuff output by Ulysses and I won’t add features for editing afterwards. 
+**If you’ve got feature requests, fork Soma and make it happen.** Soma is covering all stuff output by Ulysses and I won’t add features for editing afterwards. 
 
 Disclaimer: got an awful amount of work to deal with like, say, making eBooks to pay my rent + developing the “CSS framework for eBooks” that should have been launched like one year ago. In other words, my spare time is scarce.
 
