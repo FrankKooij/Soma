@@ -161,6 +161,8 @@ On the other hand, **if you want to publish anywhere else, you got no choice.** 
 
 Use [Kindle Previewer](http://www.amazon.com/gp/feature.html?docId=1000765261). Seriously. Your Kindle readers will enjoy a better UX than with a Kindle Mobi generated using some third-party software—and it will be easier to maintain if you edit your epub files manually.
 
+If you’re running El Capitan, please also [apply this patch from Amazon.](https://s3.amazonaws.com/kindlepreviewer/Kindle+Previewer+Patch.zip)
+
 ### Editing Soma
 
 Oh OK. Yeah, look, I didn’t document it very well… ¯\_(ツ)_/¯
