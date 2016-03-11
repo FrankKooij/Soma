@@ -1,0 +1,312 @@
+@charset "UTF-8";
+
+/*
+	Soma
+	by Jiminy Panoz for Chapal & Panoz
+	Blueprint for an ePub CSS compliant with all major RSs.
+	Visit http://www.ulyssesapp.com/styles for full reference
+*/
+
+@namespace h "http://www.w3.org/1999/xhtml/";
+@namespace epub "http://www.idpg.org/2007/ops";
+
+html {}
+/* Note: using optimizeLegibility will render all text as missing glyph boxes on some devices (say, some Kindles) */
+
+/* Minimalistic Reset */
+aside, figure, figcaption, nav, section {
+  font-size: 100%;
+  line-height: inherit;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+nav[epub|type~='toc'] ol li {
+  list-style: none !important;
+}
+nav[epub|type~='landmarks'],nav[epub|type~='page-list'] {
+  display: none;
+}
+
+
+/* Styles */
+@page {
+	margin: 30px 30px 20px 30px; /* Cos Nook */
+	padding: 0;
+}
+
+body {
+  	font-family: "Minion Pro", "Iowan Old Style", Palatino, "Palatino Linotype", "Palatino Nova", "BN Amasis", Cambria, FreeSerif, "Times New Roman", serif;
+  	font-size: 100%;
+  	line-height: 1.5;
+  	widows: 2;
+  	orphans: 2;
+	-webkit-hyphenate-limit-lines: 3;
+	-ms-hyphenate-limit-lines: 3;
+	-moz-hyphenate-limit-lines: 3;
+	hyphenate-limit-lines: 3;
+}
+
+h1, h2, h3, h4, h5, h6,
+figure, figcaption {
+  adobe-hyphenate: none;
+  -ms-hyphens: none;
+  -moz-hyphens: none;
+  -webkit-hyphens: none;
+  -epub-hyphens: none;
+  hyphens: none;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  page-break-after: avoid;
+  break-after: avoid;
+  text-indent: 0;
+  font-weight: normal;
+  text-align: left;
+}
+
+h1 {
+  font-size: 1.4375em;
+  line-height: 1.04347826;
+  margin-top: 0;
+  margin-bottom: 3.13043478em;
+}
+
+h2 {
+  font-size: 1.3125em;
+  line-height: 1.14285714;
+  margin-top: 2.28571429em;
+  margin-bottom: 1.14285714em;
+}
+
+h3 {
+  font-size: 1.125em;
+  line-height: 1.33333333;
+  margin-top: 1.33333333em;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+h4 {
+  font-size: 1em;
+  line-height: inherit;
+  margin-top: 1.5em;
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1em;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-indent: 1em;
+}
+
+.chapter-title+p, .section-title+p, h3+p, h4+p,
+blockquote>p, blockquote+p, 
+ul+p, ol+p, 
+pre+p, 
+hr+p,
+figure+p, video+p,
+li > p {
+	text-indent: 0;
+}
+
+blockquote { 
+	font-size: 1em;
+	line-height: inherit;
+	margin: 1.5em 5%;
+	font-style: italic;
+}
+
+blockquote i,
+blockquote em,
+blockquote cite {
+  font-style: normal;
+}
+
+ul, ol {
+	margin: 1.5em 0;
+  	padding-left: 5%;
+}
+
+ul ol, ul ul,
+ol ol, ol ul {
+	margin: 0;
+}
+
+li {
+	font-size: 1em;
+	line-height: inherit;
+}
+
+pre {
+  margin: 1.5em 0 1.5em 5%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  -ms-tab-size: 4;
+  -moz-tab-size: 4;
+  -webkit-tab-size: 4;
+  tab-size: 4;
+}
+
+hr {
+  width: 25%;
+  margin: 1.4375em 37.5%;
+  height: 1px;
+  background-color: #171717;
+  border: none;
+  border-top: 1px solid #EAEAEA;
+}
+
+em {
+	font-style: italic;
+}
+
+em em {
+	font-style: normal;
+}
+
+strong {
+	font-weight: bold;
+}
+
+sup {
+  font-size: 75%;
+  line-height: 1.2;
+  vertical-align: super;
+  vertical-align: 33%;
+}
+
+code {
+  font-family: monospace;
+}
+
+a {
+	text-decoration: underline;
+	font-weight: bold;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	color: inherit;
+	-webkit-text-fill-color: inherit;
+}
+
+sup a.footnote {
+	text-decoration: none;
+}
+
+video {
+	margin: 1.5em auto;
+	max-width: 100%;
+	height: auto;
+}
+
+figure { 
+	margin: 1.5em auto;
+  	text-align: center;
+}
+
+figcaption {
+	text-align: center;
+	font-size: 0.9375em;
+  	line-height: 1.6;
+  	font-style: italic;
+}
+
+figure img {
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+aside {
+	font-size: 0.875em;
+  	line-height: 1.7142857143;
+  	margin: 3.4285714286em 0 0 5%;
+}
+
+div.cover {
+	margin: 0;
+	padding: 0;
+	height: 99%;
+	text-align: center;
+}
+
+img.cover {
+	width: auto;
+	max-width: 100%;
+	height: 100%;
+	max-height: 99vh;
+}
+
+@media amzn-kf8 {
+	h1, h2 {
+		line-height: 1.2;	/* Minimum value Kindle takes into account */
+	}
+    video {
+  	  	display: none;
+  	}
+}
+
+@media amzn-mobi {
+  h1 {
+    font-size: xx-large;
+    margin: 1em 0 2em 0;
+  }
+
+  h2 {
+    font-size: x-large;
+    margin: 1em 0;
+  }
+
+  h3 {
+    font-size: large;
+    margin: 1em 0;
+  }
+
+  h4 {
+    font-size: medium;
+    margin: 1em 0 0 0;
+  }
+
+  sup {
+    font-size: x-small;
+  }
+
+  hr {
+    margin: 1em 0;
+  }
+
+  figcaption {
+    font-size: medium;
+  }
+
+  ul {
+    margin: 1em 0;
+  }
+
+  ol {
+    margin: 1em 0;
+  }
+
+  blockquote {
+    margin: 1em 0;
+  }
+
+  pre {
+    margin: 1em 0;
+  }
+  
+  figure {
+  	margin: 1em 0;
+  }
+  
+  video {
+  	display: none;
+  }
+  
+  aside {
+  	font-size: medium;
+  	margin-top: 3em;
+  }
+}
