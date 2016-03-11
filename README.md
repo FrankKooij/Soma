@@ -153,7 +153,7 @@ To clarify:
 - we need to link the call and the footnote (using `id`, `href` and the callback);
 - because the footnote is not a direct child of `aside` (there’s a `p` and a `span` in between), **iBooks will display this footnote** at the end of the XHTML document—you may want to add a horizontal rule before, as in print books.
 
-On the one hand, **if you’re publishing in the iBookStore only, changing the markup is your call.** You’d probably be better with Ulysses’ default output. 
+On the one hand, **if you’re publishing in the iBookStore only, changing the markup is your call.** You’d probably be better off with Ulysses’ default output. 
 
 On the other hand, **if you want to publish anywhere else, you got no choice.** Footnotes’ UX will be abysmal as they won’t work properly. Then some readers will say that you don’t know shit because you can’t hyperlink. Finally you’ll get a bad rap and it’s game over. 
 
@@ -165,7 +165,7 @@ But documenting a CSS for ePub is a really tough job—basically, comments every
 
 However, I may give some pieces of advice for some really important stuff.
 
-- `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on theme currently used—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
+- `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on the theme currently in use—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
 - Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, thematic break (`hr`), &c. This is not supported in RMSDK.
 - If you have snippets of code in your eBook, you’d better embed a monospace font in your ePub file. Some devices/apps don’t have a default one and will render code as serif or sans-serif.
 - Be insanely cautious with value `em` for margins and paddings, especially left and right; if the user increases font-size, margins will increase accordingly. As a result, you get bigger text in a smaller container. This is the reason why I am using values in `%` (computed based on `width` of container).
