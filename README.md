@@ -50,7 +50,7 @@ Those principles are the backbone of Soma and explain why, for instance, `line-h
 
 ## Design Approach
 
-First and foremost, it is important to remember **Soma was designed for Ulysses’ ePub output** and won’t perfectly work with other authoring software.
+First and foremost, it is important to remember **Soma was designed for Ulysses’ ePub output** and won’t perfectly work with other authoring software—it covers vanilla markdown though, so making it work with other apps is just about adapting and extending.
 
 In order to solve many issues, a “progressive enhancement” strategy has been adopted: Soma was designed for ePub2, unsupported styles are declared only to inject some *cachet* in EPUB3 (e.g. links in small-caps). As for Kindle, KF8 is part of the global stylesheet, requiring only minimal alterations afterwards.
 
@@ -210,10 +210,6 @@ Disclaimer: got an awful amount of work to deal with like, say, making eBooks to
 
 **Nota Bene: all disrespectful messages are belong to “is:issue is:closed”.**
 
-### Will you push Soma to Ulysses’ Style Exchange?
-
-Yeah, probably. But only when I’m sure everything is OK and there are no critical issues with it.
-
 ### Useful links for eBook Production
 
 eBook Production is a little bit different than web development. So here are some links that could prove useful…
@@ -223,6 +219,14 @@ eBook Production is a little bit different than web development. So here are som
 - [ePub Zone](http://epubzone.org)
 - [my blog](http://jiminy.chapalpanoz.com) if you speak French
 
+### Will you push Soma to Ulysses’ Style Exchange?
+
+Yeah, probably. But only when I’m sure everything is OK and there are no critical issues with it.
+
+### Are companion themes (e.g. PDF, HTML, &c.) planned?
+
+Nope. For lack of time and courage, I’m not planning to do that. But again, this is just a fork away….
+
 ### How to contact you? 
 
 OK, look, I’m a freelance so I must deal with so many things in so little time… Having more stuff to deal with would probably kill me. 
@@ -231,6 +235,6 @@ Here are 3 simple rules to follow:
 
 - if you have problems using or editing Soma, use Github issues;
 - if you want to say hello—or maybe thank me?—, use [Twitter](https://twitter.com/jiminypan);
-- **only if** you want to hire me, use the contact form on my website.
+- **only if** you want to talk business, use the contact form on my website.
 
 Thank you in advance.
