@@ -25,12 +25,12 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Install Soma
 
-- Download this repo as zip;
-- unzip the downloaded file;
-- open Ulysses’ preferences;
-- Go to “Styles” tab;
-- click “Add styles” button;
-- select “Soma.ulstyle” and import it as ePub theme.
+1. Download this repo as zip
+2. Unzip the downloaded file
+3. Open Ulysses’ preferences
+4. Go to “Styles” tab
+5. Click “Add styles” button
+6. Select “Soma.ulstyle” and import it as ePub theme
 
 You can now use Soma when exporting to ePub.
 
@@ -82,11 +82,11 @@ Shall you edit this theme, this charset will allow you to put non-ASCII characte
 
 ### Why the namespaces?
 
-If you want to style using the `epub:type` attribute, the epub namespace is mandatory. 
+If you want to style using the `epub:type` attribute without a dirty “escaping character hack”, the epub namespace is required. 
 
 The xhtml namespace may also be useful if you edit your ePub file manually and use tags like `acronym`, which is deprecated in HTML but not in XHTML.
 
-### Any tips for headings? 
+### Any tips for headings?
 
 When designing this stylesheet, I saw that Ulysses' developers decided that chapter title is `h1` so use that for… chapter titles. Use `h2` for section titles (inside chapters).
 
@@ -113,8 +113,8 @@ If you want to do it yourself, here’s the HTML + CSS to use:
 ##### Footnote
 
 ```
-  <aside class="footnotes" epub:type="footnotes">
-	<p class="footnote">(1) <span class="inline-iBooks" epub:type="footnote" id="footnote-0001">Footnote</span>&#160;<a class="callback" href="#fnreturn-0001">↵</a></p>
+<aside class="footnotes" epub:type="footnotes">
+  <p class="footnote">(1) <span class="inline-iBooks" epub:type="footnote" id="footnote-0001">Footnote</span>&#160;<a class="callback" href="#fnreturn-0001">↵</a></p>
  </aside>
 ```
  
@@ -155,7 +155,11 @@ To clarify:
 
 On the one hand, **if you’re publishing in the iBookStore only, changing the markup is your call.** You’d probably be better off with Ulysses’ default output. 
 
-On the other hand, **if you want to publish anywhere else, you got no choice.** Footnotes’ UX will be abysmal as they won’t work properly. Then some readers will say that you don’t know shit because you can’t hyperlink. Finally you’ll get a bad rap and it’s game over. 
+On the other hand, **if you want to publish anywhere else, you got no choice.** Footnotes’ UX will be abysmal as they won’t work properly. Then some readers will say that you don’t know shit because you can’t hyperlink. Finally you’ll get a bad rap and it’s game over.
+
+### Converting to Kindle
+
+Use [Kindle Previewer](http://www.amazon.com/gp/feature.html?docId=1000765261). Seriously. Your Kindle readers will enjoy a better UX than with a Kindle Mobi generated using some third-party software—and it will be easier to maintain if you edit your epub files manually.
 
 ### Editing Soma
 
@@ -166,8 +170,10 @@ But documenting a CSS for ePub is a really tough job—basically, comments every
 However, I may give some pieces of advice for some really important stuff.
 
 - `-webkit-text-fill-color` is allowing the override of iBooks’ `a` default color. Now, iBooks got 4 themes (white, sepia, gray, black) and the value of the default color is modified dynamically based on the theme currently in use—in order to meet WCAG 2.0’s contrast ratio. In other words, don’t override and stick to default if you want to use color for links. As far as I can tell, there is no color meeting this WCAG requirement for all 4 themes.
-- do never declare black or shades of gray using `color` for text: some apps won’t invert this value when the user enables night mode and, as a result, they’ll get dark text on a dark background, making the text unreadable. If you really need black, use `color: inherit`.
-- Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, thematic break (`hr`), &c. This is not supported in RMSDK.
+- Do **never** declare black or shades of gray using `color` for text: some apps won’t invert this value when the user enables night mode and, as a result, they’ll get dark text on a dark background, making the text unreadable. If you really need black, use `color: inherit`.
+- Do **never** declare `font-family` for `p` or `li` and other critical bodycopy element as it will disable the typeface setting for users in a shitload of apps and devices. Let the cascade do its job, making those elements inherit from `body`.
+- Don’t rely on the `html` selector. Please note RS usually declare `text-rendering: optimizeLegibility` when it doesn’t have issues (rendering or performance) so do not impose it on users—especially as there are wild bugs out there. 
+- Don’t rely on `text-transform` and `font-variant`, pseudo-classes and -elements for “critical styling”, e.g. headings, strong emphasis, list style type, thematic break (`hr`), &c. This is not supported in RMSDK.
 - If you have snippets of code in your eBook, you’d better embed a monospace font in your ePub file. Some devices/apps don’t have a default one and will render code as serif or sans-serif.
 - Be insanely cautious with value `em` for margins and paddings, especially left and right; if the user increases font-size, margins will increase accordingly. As a result, you get bigger text in a smaller container. This is the reason why I am using values in `%` (computed based on `width` of container).
 - Styling of HTML5 elements (e.g. `aside`, `figure`, `section`, &c.) relies on the mini reset. Don’t ever get rid of this reset, please, ePub2-only RS being still popular worldwide.
@@ -204,7 +210,7 @@ Disclaimer: got an awful amount of work to deal with like, say, making eBooks to
 
 **Nota Bene: all disrespectful messages are belong to “is:issue is:closed”.**
 
-### Useful links for eBook production
+### Useful links for eBook Production
 
 eBook Production is a little bit different than web development. So here are some links that could prove useful…
 
