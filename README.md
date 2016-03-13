@@ -25,7 +25,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Install Soma
 
-1. Download this repo as zip
+1. [Download the pre-release](https://github.com/JayPanoz/Soma/releases/tag/v0.9)
 2. Unzip the downloaded file
 3. Open Ulysses’ preferences
 4. Go to “Styles” tab
