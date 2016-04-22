@@ -25,7 +25,9 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Install Soma
 
-1. [Download the pre-release](https://github.com/JayPanoz/Soma/releases/tag/v0.9)
+### From Github
+
+1. [Download v.1 (stable)](https://github.com/JayPanoz/Soma/releases/tag/v.1)
 2. Unzip the downloaded file
 3. Open Ulysses’ preferences
 4. Go to “Styles” tab
@@ -33,6 +35,10 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 6. Select “Soma.ulstyle” and import it as ePub theme
 
 You can now use Soma when exporting to ePub.
+
+### From Ulysses’ Style Exchange
+
+[Download the theme here](http://styles.ulyssesapp.com/bundle/Soma/571a7db7b634a4410207d39e) then import it in Ulysses’ preferences.
 
 ## Goals
 
@@ -76,4 +82,4 @@ To put it simply, Soma is a humble contribution to a better UX in all major RS, 
 
 ## FAQ
 
-See [Wiki](https://github.com/JayPanoz/Soma/wiki)
+See [Wiki](https://github.com/JayPanoz/Soma/wiki).
