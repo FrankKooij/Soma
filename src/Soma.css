@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*
-	Soma
+	Soma version 1.1
 	by Jiminy Panoz for Chapal & Panoz
 	Blueprint for an ePub CSS compliant with all major RSs.
 	Visit http://www.ulyssesapp.com/styles for full reference
@@ -29,6 +29,11 @@ nav[epub|type~='landmarks'],nav[epub|type~='page-list'] {
   display: none;
 }
 
+/* We try to avoid blank pages when last-child has vertical margins
+and is displayed at the bottom of the screen (e.g. list, figure, etc.) */
+body > section > :last-child {
+  margin-bottom: 0;
+}
 
 /* Styles */
 @page {
@@ -70,6 +75,7 @@ h1 {
   line-height: 1.04347826;
   margin-top: 0;
   margin-bottom: 3.13043478em;
+  font-weight: bold;
 }
 
 h2 {
@@ -226,6 +232,11 @@ aside {
   margin: 3.4285714286em 0 0 5%;
 }
 
+/* In case there is more than one footnote */
+aside + aside {
+  margin-top: 0.857142857em;
+}
+
 div.cover {
   margin: 0;
   padding: 0;
@@ -308,6 +319,6 @@ img.cover {
   
   aside {
     font-size: medium;
-    margin-top: 3em;
+    margin-top: 2em;
   }
 }

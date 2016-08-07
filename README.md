@@ -7,6 +7,8 @@ Soma is a blueprint for an ePub CSS compliant with all major Reading Systems (RS
 - Adobe RMSDK;
 - Readium;
 - iBooks;
+- Kobo;
+- Google Play Books;
 - Kindle.
 
 **Please note Soma was specifically designed for [Ulysses App](http://www.ulyssesapp.com) and can’t be used for other software AS-IS.**
